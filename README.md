@@ -264,8 +264,7 @@ GET /api/products
 
 ### ■ Infrastructure 層
 
-- データベースへ接続する
 - 商品を検索する
-- DB のデータを Domain オブジェクトへ変換する
+- モックデータを Domain オブジェクトへ変換する
 
 業務ルールは `Domain 層`、処理の流れは `Application 層`、HTTP 通信は `Presentation` 層、DB 操作は `Infrastructure` 層に分けます。

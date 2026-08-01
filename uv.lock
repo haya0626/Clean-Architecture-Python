@@ -87,7 +87,7 @@ wheels = [
 ]
 
 [[package]]
-name = "cleanarchitecture-python"
+name = "clean_architecture_python"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
