@@ -1,6 +1,6 @@
 <img src="./pinkguy.jpg" width="800" height="250">
 
-# CleanArchitecture-Python
+# Clean-Architecture-Python
 
 Python と FastAPI を使用し、Clean Architecture に基づいた Web API を構築するためのプロジェクトです。
 
@@ -73,7 +73,7 @@ uv --version
 ### 1. リポジトリを clone
 
 ```powershell
-git clone https://github.com/haya0626/CleanArchitecture-Python.git
+git clone https://github.com/haya0626/Clean-Architecture-Python.git
 cd CleanArchitecture-Python
 ```
 

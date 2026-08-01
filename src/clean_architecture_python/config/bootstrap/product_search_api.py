@@ -1,9 +1,9 @@
-from cleanarchitecture_python.application.product_repository import ProductRepository
-from cleanarchitecture_python.application.search_products import SearchProductsUseCase
-from cleanarchitecture_python.infrastructure.mock_product_repository import (
+from clean_architecture_python.application.product_repository import ProductRepository
+from clean_architecture_python.application.search_products import SearchProductsUseCase
+from clean_architecture_python.infrastructure.mock_product_repository import (
     MockProductRepository,
 )
-from cleanarchitecture_python.presentation.product_router import create_product_router
+from clean_architecture_python.presentation.product_router import create_product_router
 from fastapi import APIRouter
 
 # Springが自動で行うBean生成とDI等を、Pythonコードで手動実装しているイメージ
@@ -13,7 +13,7 @@ def create_product_search_api_router(
     product_repository: ProductRepository | None = None,
 ) -> APIRouter:
     
-    repository = MockProductRepository
+    repository = MockProductRepository()
 
     search_products_use_case = SearchProductsUseCase(repository)
 

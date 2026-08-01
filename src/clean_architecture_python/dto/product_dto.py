@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import date
 
-from cleanarchitecture_python.domain.product import Product
+from clean_architecture_python.domain.product import Product
 
 
 @dataclass(frozen=True)

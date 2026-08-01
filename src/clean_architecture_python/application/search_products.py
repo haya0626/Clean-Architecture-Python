@@ -1,7 +1,7 @@
 from datetime import date
 
-from cleanarchitecture_python.dto.product_dto import ProductDto
-from cleanarchitecture_python.application.product_repository import ProductRepository
+from clean_architecture_python.dto.product_dto import ProductDto
+from clean_architecture_python.application.product_repository import ProductRepository
 
 
 """UseCase"""

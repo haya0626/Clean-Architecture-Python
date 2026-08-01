@@ -1,10 +1,9 @@
 import uvicorn
-from cleanarchitecture_python.bootstrap.application_bootstrap import (
+from clean_architecture_python.config.bootstrap.application_bootstrap import (
     create_application_router,
 )
-from cleanarchitecture_python.config.settings import get_settings
+from clean_architecture_python.config.settings import get_settings
 from fastapi import FastAPI
-from fastapi.responses import ORJSONResponse
 
 
 def create_app() -> FastAPI:
@@ -18,7 +17,6 @@ def create_app() -> FastAPI:
         docs_url="/docs",
         redoc_url="/redoc",
         openapi_url="/api/v1/openapi.json",
-        default_response_class=ORJSONResponse,
     )
 
     application.include_router(
@@ -36,7 +34,7 @@ def run() -> None:
     settings = get_settings()
     
     uvicorn.run(
-        "cleanarchitecture_python.main:app",
+       "clean_architecture_python.main:app",
         host=settings.host,
         port=settings.port,
         reload=settings.reload,

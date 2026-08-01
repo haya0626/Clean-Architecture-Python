@@ -4,10 +4,10 @@ from typing import Annotated
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from cleanarchitecture_python.application.search_products import (
+from clean_architecture_python.application.search_products import (
     SearchProductsUseCase,
 )
-from cleanarchitecture_python.dto.product_dto import ProductDto
+from clean_architecture_python.dto.product_dto import ProductDto
 
 
 class ProductResponse(BaseModel):
@@ -54,11 +54,8 @@ def create_product_router(
         response_model=list[ProductResponse],
         summary="商品一覧を検索する",
     )
-    async def search_products(
-        product_name: Annotated[
-            str | None,
-        ] = None,
-    ) -> list[ProductResponse]:
+    
+    async def search_products() -> list[ProductResponse]:
         product_dtos = await search_products_use_case.execute(
             product_name
         )

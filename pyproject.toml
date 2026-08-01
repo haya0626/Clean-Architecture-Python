@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-clean-architecture-python = "cleanarchitecture_python:main"
+cleanarchitecture-python = "clean_architecture_python.main:run"
 
 [build-system]
 requires = ["uv_build>=0.12.1,<0.13.0"]

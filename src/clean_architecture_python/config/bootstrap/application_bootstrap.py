@@ -1,4 +1,4 @@
-from cleanarchitecture_python.bootstrap.product_search_api import (
+from clean_architecture_python.config.bootstrap.product_search_api import (
     create_product_search_api_router,
 )
 from fastapi import APIRouter

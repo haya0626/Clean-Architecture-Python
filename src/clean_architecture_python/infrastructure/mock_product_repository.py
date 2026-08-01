@@ -1,6 +1,6 @@
-from cleanarchitecture_python.application.product_repository import ProductRepository
-from cleanarchitecture_python.domain.product import Product
-from cleanarchitecture_python.infrastructure.product_mapper import ProductMapper
+from clean_architecture_python.application.product_repository import ProductRepository
+from clean_architecture_python.domain.product import Product
+from clean_architecture_python.infrastructure.product_mapper import ProductMapper
 
 class MockProductRepository(ProductRepository):
 

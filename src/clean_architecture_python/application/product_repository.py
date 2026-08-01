@@ -1,3 +1,7 @@
+from abc import ABC, abstractmethod
+
+from clean_architecture_python.domain.product import Product
+
 # ABC：抽象クラスの親クラス
 # abstractmethod：継承先で実装必須にするためのデコレーター
 class ProductRepository(ABC):
