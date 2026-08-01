@@ -16,7 +16,6 @@ def create_app() -> FastAPI:
         description="4層Clean Architectureで実装したAPI",
         docs_url="/docs",
         redoc_url="/redoc",
-        openapi_url="/api/v1/openapi.json",
     )
 
     application.include_router(

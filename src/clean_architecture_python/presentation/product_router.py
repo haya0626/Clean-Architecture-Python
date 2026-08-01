@@ -52,6 +52,7 @@ def create_product_router(
         "",
         response_model=list[ProductResponse],
         summary="商品一覧を検索する",
+        operation_id="search_products"
     )
     
     async def search_products(

@@ -1,10 +1,12 @@
 from datetime import date
 
-from clean_architecture_python.domain.product import Product, SalesStatus
-from mock.infrastructure.product import ProductRecord
-from abc import ABC, abstractmethod
-
-from clean_architecture_python.domain.product import Product
+from clean_architecture_python.domain.product import (
+    Product,
+    SalesStatus,
+)
+from clean_architecture_python.infrastructure.mock_product_data import (
+    ProductRecord,
+)
 
 class ProductMapper:
     """DB形式のデータをDomainオブジェクトへ変換するMapper。"""

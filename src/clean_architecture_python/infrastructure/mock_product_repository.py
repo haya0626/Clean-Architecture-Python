@@ -1,16 +1,18 @@
 from clean_architecture_python.application.product_repository import ProductRepository
 from clean_architecture_python.domain.product import Product
 from clean_architecture_python.infrastructure.product_mapper import ProductMapper
-from mock.infrastructure.product import ProductRecord
+from clean_architecture_python.infrastructure.mock_product_data import (
+    MOCK_PRODUCT_TABLE,
+    ProductRecord,
+)
 
 class MockProductRepository(ProductRepository):
 
     def __init__(
-    self,
-    records: tuple[ProductRecord, ...] = MOCK_PRODUCT_TABLE,
+        self,
+        records: tuple[ProductRecord, ...] = MOCK_PRODUCT_TABLE,
     ) -> None:
-    
-    self._records = records
+        self._records = records
 
     async def search(self, product_name: str | None) -> list[Product]:
         """論理削除を除外し、商品名の部分一致検索を行う。"""
