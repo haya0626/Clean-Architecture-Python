@@ -1,5 +1,4 @@
 from datetime import date
-from typing import Annotated
 
 from fastapi import APIRouter
 from pydantic import BaseModel
@@ -55,7 +54,9 @@ def create_product_router(
         summary="商品一覧を検索する",
     )
     
-    async def search_products() -> list[ProductResponse]:
+    async def search_products(
+         product_name: str | None = None,
+    ) -> list[ProductResponse]:
         product_dtos = await search_products_use_case.execute(
             product_name
         )

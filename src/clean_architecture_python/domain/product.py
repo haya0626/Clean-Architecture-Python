@@ -12,7 +12,14 @@ class SalesStatus(StrEnum):
 # frozen=True: インスタンス変数の書き換えを防止
 @dataclass(frozen=True, slots=True)
 class Product:
-    
+    product_id: str
+    product_name: str
+    price: int
+    stock_quantity: int
+    sales_status: SalesStatus
+    sales_start_date: date
+    sales_end_date: date | None
+
     def is_purchasable(self, current_date: date) -> bool:
         """指定日に商品を購入できるか判定する。
 

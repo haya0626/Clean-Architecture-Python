@@ -1,3 +1,9 @@
 {
-  "python.analysis.extraPaths": ["${workspaceFolder}/src"]
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+  "editor.multiCursorModifier": "alt",
+
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  }
 }
