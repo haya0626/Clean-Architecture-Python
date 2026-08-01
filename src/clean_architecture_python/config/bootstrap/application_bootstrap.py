@@ -1,7 +1,8 @@
+from fastapi import APIRouter
+
 from clean_architecture_python.config.bootstrap.product_search_api import (
     create_product_search_api_router,
 )
-from fastapi import APIRouter
 
 """ システムで使用するすべてのAPIをまとめて返す。"""
 def create_application_router() -> APIRouter:

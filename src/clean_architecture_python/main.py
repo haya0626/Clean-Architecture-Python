@@ -1,9 +1,10 @@
 import uvicorn
+from fastapi import FastAPI
+
 from clean_architecture_python.config.bootstrap.application_bootstrap import (
     create_application_router,
 )
 from clean_architecture_python.config.settings import get_settings
-from fastapi import FastAPI
 
 
 def create_app() -> FastAPI:

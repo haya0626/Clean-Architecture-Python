@@ -8,6 +8,7 @@ from clean_architecture_python.infrastructure.mock_product_data import (
     ProductRecord,
 )
 
+
 class ProductMapper:
     """DB形式のデータをDomainオブジェクトへ変換するMapper。"""
 
