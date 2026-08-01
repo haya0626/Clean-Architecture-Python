@@ -1,15 +1,222 @@
-# README
+<img src="./pinkGuy.jpg" width="500" height="150">
 
-Python を用いて、Clean Architecture に基づいた設計・実装を行うプロジェクトです。
+# CleanArchitecture-Python
 
-## 使用ライブラリ
+Python と FastAPI を使用し、Clean Architecture に基づいた Web API を構築するためのプロジェクトです。
 
-| 種類                    | ライブラリ名                    |
-| ----------------------- | ------------------------------- |
-| パッケージ・Python 管理 | uv                              |
-| Web フレームワーク      | fastapi                         |
-| 開発用 ASGI サーバー    | uvicorn[standard]               |
-| 環境変数                | pydantic-settings               |
-| テスト                  | pytest / pytest-asyncio / httpx |
-| Linter・Formatter       | ruff                            |
-| 型チェック              | mypy                            |
+本プロジェクトでは、業務アプリケーションを想定し、保守性・テスト容易性・変更への強さを意識した設計と実装を行います。
+
+## 目的
+
+以下の内容を実践的に学ぶことを目的としています。
+
+- Python を使用した Web API 開発
+- FastAPI によるエンドポイント実装
+- Clean Architecture を用いた責務分離
+- 型安全を意識した実装
+- 単体テスト・結合テストの作成
+- Linter・Formatter によるコード品質の統一
+- 環境変数を利用した設定管理
+
+## 技術スタック
+
+| 分類                | 使用技術                        |
+| ------------------- | ------------------------------- |
+| Language            | Python 3.13                     |
+| Package Manager     | uv                              |
+| Web Framework       | FastAPI                         |
+| ASGI Server         | Uvicorn                         |
+| Settings            | pydantic-settings               |
+| Testing             | pytest / pytest-asyncio / httpx |
+| Linter / Formatter  | Ruff                            |
+| Static Type Checker | mypy                            |
+
+## 各ツールの役割
+
+| ツール              | 用途                                   |
+| ------------------- | -------------------------------------- |
+| `uv`                | Python、仮想環境、依存ライブラリの管理 |
+| `FastAPI`           | Web API の実装                         |
+| `Uvicorn`           | FastAPI アプリケーションの起動         |
+| `pydantic-settings` | 環境変数や設定値の管理                 |
+| `pytest`            | テストの実行                           |
+| `pytest-asyncio`    | 非同期処理のテスト                     |
+| `httpx`             | API の HTTP テスト                     |
+| `Ruff`              | Lint、import 整理、コードフォーマット  |
+| `mypy`              | 静的型チェック                         |
+
+## 前提環境
+
+以下が利用できることを前提とします。
+
+- Git
+- Visual Studio Code
+- PowerShell
+- uv
+
+uv がインストールされていない場合は、PowerShell で以下を実行します。
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+インストール後、PowerShell または Visual Studio Code を再起動してください。
+
+確認コマンド：
+
+```powershell
+uv --version
+```
+
+## セットアップ
+
+### 1. リポジトリを clone
+
+```powershell
+git clone https://github.com/haya0626/CleanArchitecture-Python.git
+cd CleanArchitecture-Python
+```
+
+### 2. Python と依存ライブラリを同期
+
+```powershell
+uv sync
+```
+
+`uv sync` により、以下が自動的に行われます。
+
+- 使用する Python バージョンの確認
+- 仮想環境 `.venv` の作成
+- 依存ライブラリのインストール
+- `uv.lock` に基づくバージョンの同期
+
+Python のバージョンを確認します。
+
+```powershell
+uv run python --version
+```
+
+## アプリケーションの起動
+
+以下のコマンドで開発サーバーを起動します。
+
+```powershell
+uv run uvicorn clean_architecture_python.main:app --reload
+```
+
+起動後、以下へアクセスします。
+
+| URL                     | 用途 |
+| ----------------------- | ---- |
+| `http://127.0.0.1:8000` | API  |
+
+`--reload` を指定しているため、ソースコードを変更すると開発サーバーが自動的に再起動します。
+
+## 開発用コマンド
+
+### テスト
+
+```powershell
+uv run pytest
+```
+
+詳細を表示する場合：
+
+```powershell
+uv run pytest -v
+```
+
+特定のテストファイルだけ実行する場合：
+
+```powershell
+uv run pytest tests/test_sample.py
+```
+
+### Lint
+
+```powershell
+uv run ruff check .
+```
+
+自動修正可能な問題を修正する場合：
+
+```powershell
+uv run ruff check . --fix
+```
+
+### Format
+
+```powershell
+uv run ruff format .
+```
+
+フォーマット差分がないことだけ確認する場合：
+
+```powershell
+uv run ruff format --check .
+```
+
+### 型チェック
+
+```powershell
+uv run mypy
+```
+
+### 依存関係の確認
+
+```powershell
+uv pip list
+```
+
+依存関係に問題がないか確認する場合：
+
+```powershell
+uv pip check
+```
+
+## 開発時の確認手順
+
+コード変更後は、以下の順番で確認します。
+
+```powershell
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy
+uv run pytest
+```
+
+各コマンドの役割は以下です。
+
+| コマンド              | 確認内容                   |
+| --------------------- | -------------------------- |
+| `ruff check`          | コード上の問題やルール違反 |
+| `ruff format --check` | フォーマット差分           |
+| `mypy`                | 型の不整合                 |
+| `pytest`              | 実装した処理の動作         |
+
+すべて成功した状態でコミットすることを基本とします。
+
+## 設定ファイル
+
+| ファイル          | 用途                                       |
+| ----------------- | ------------------------------------------ |
+| `pyproject.toml`  | プロジェクト情報、依存関係、各種ツール設定 |
+| `uv.lock`         | 使用するライブラリのバージョン固定         |
+| `.python-version` | 使用する Python バージョン                 |
+| `.env`            | ローカル環境の設定値                       |
+| `.env.example`    | 環境変数のサンプル                         |
+| `.gitignore`      | Git 管理対象外ファイルの定義               |
+
+## 開発方針
+
+本プロジェクトでは、以下を意識して実装します。
+
+- 1 つのクラスや関数に複数の責務を持たせない
+- フレームワーク固有の処理と業務ロジックを分離する
+- 依存関係の向きを意識する
+- 外部サービスやデータベースへ直接依存しすぎない
+- 処理の意図が分かる命名を行う
+- 公開する関数やメソッドには型を付ける
+- 機能追加時は可能な範囲でテストも追加する
+- エラーを握りつぶさず、適切に扱う
+- コード変更後は Lint、型チェック、テストを実行する
