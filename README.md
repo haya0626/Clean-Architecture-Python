@@ -1,4 +1,4 @@
-<img src="./pinkguy.jpg" width="800" height="150">
+<img src="./pinkguy.jpg" width="800" height="250">
 
 # CleanArchitecture-Python
 
