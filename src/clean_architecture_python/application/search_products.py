@@ -1,28 +1,33 @@
 from datetime import datetime
-from xxlimited import Str
 from zoneinfo import ZoneInfo
 
 from clean_architecture_python.dto.product_dto import ProductDto
 
-"""UseCase"""
-
 
 class SearchProductsUseCase:
+    def __init__(self, repository) -> None:
+        self._repository = repository
+
     async def execute(
         self,
-        product_name: Str | None,
+        product_name: str | None = None,
     ) -> list[ProductDto]:
-        """商品を検索し、レスポンス用DTOへ変換する。"""
+        """商品名を整形して、Repositoryへ検索を依頼する。"""
 
-        normalized_name = (
-            # 前後にある空白や改行を削除
-            product_name.strip() if product_name else None
+        normalized_name = product_name.strip() if product_name else None
+
+        products = await self._repository.search(
+            product_name=normalized_name,
         )
 
-        products = await self._product_repository.search(normalized_name)
+        current_date = datetime.now(
+            tz=ZoneInfo("Asia/Tokyo"),
+        ).date()
 
-        APPLICATION_TIMEZONE = ZoneInfo("Asia/Tokyo")
-
-        current_date = datetime.now(tz=APPLICATION_TIMEZONE).date()
-
-        return [ProductDto.from_domain(product, current_date) for product in products]
+        return [
+            ProductDto.from_domain(
+                product=product,
+                current_date=current_date,
+            )
+            for product in products
+        ]

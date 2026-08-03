@@ -13,7 +13,6 @@ def create_application_router() -> APIRouter:
 
     application_router.include_router(
         create_product_search_api_router(),
-        tags=["商品検索"],
     )
 
     # 今後APIを追加する場合は、ここへ登録します。
