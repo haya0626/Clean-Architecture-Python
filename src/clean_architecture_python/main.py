@@ -1,3 +1,7 @@
+import logging
+from collections.abc import AsyncGenerator
+from contextlib import asynccontextmanager
+
 import uvicorn
 from fastapi import FastAPI
 
@@ -5,6 +9,29 @@ from clean_architecture_python.config.bootstrap.application_bootstrap import (
     create_application_router,
 )
 from clean_architecture_python.config.settings import get_settings
+
+logger = logging.getLogger("uvicorn.error")
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncGenerator[None]:
+    """FastAPIの起動時・終了時に実行する処理。"""
+
+    settings = get_settings()
+
+    logger.info(
+        "Swagger UI: http://%s:%s/docs",
+        settings.host,
+        settings.port,
+    )
+
+    logger.info(
+        "ReDoc:      http://%s:%s/redoc",
+        settings.host,
+        settings.port,
+    )
+
+    yield
 
 
 def create_app() -> FastAPI:
@@ -17,6 +44,7 @@ def create_app() -> FastAPI:
         description="4層Clean Architectureで実装したAPI",
         docs_url="/docs",
         redoc_url="/redoc",
+        lifespan=lifespan,
     )
 
     application.include_router(
