@@ -162,18 +162,6 @@ uv run ruff format --check .
 uv run mypy
 ```
 
-### 依存関係の確認
-
-```powershell
-uv pip list
-```
-
-依存関係に問題がないか確認する場合：
-
-```powershell
-uv pip check
-```
-
 ## 開発時の確認手順
 
 コード変更後は、以下の順番で確認します。
