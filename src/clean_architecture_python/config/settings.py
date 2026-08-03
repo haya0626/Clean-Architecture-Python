@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    name: str    
+    name: str
     host: str = "127.0.0.1"
     port: int = Field(default=8000)
     reload: bool = True
@@ -18,6 +18,7 @@ class Settings(BaseSettings):
         # 余分な設定をエラーにしたい場合は「forbid」にする
         extra="ignore",
     )
+
 
 # lru_cache : 関数の実行結果を保存して再利用するためのデコレーター
 @lru_cache

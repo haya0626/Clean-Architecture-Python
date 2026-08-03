@@ -5,8 +5,10 @@ from clean_architecture_python.config.bootstrap.product_search_api import (
 )
 
 """ システムで使用するすべてのAPIをまとめて返す。"""
+
+
 def create_application_router() -> APIRouter:
-    
+
     application_router = APIRouter()
 
     application_router.include_router(

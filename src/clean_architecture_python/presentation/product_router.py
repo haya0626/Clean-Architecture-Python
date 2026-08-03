@@ -52,19 +52,13 @@ def create_product_router(
         "",
         response_model=list[ProductResponse],
         summary="商品一覧を検索する",
-        operation_id="search_products"
+        operation_id="search_products",
     )
-    
     async def search_products(
-         product_name: str | None = None,
+        product_name: str | None = None,
     ) -> list[ProductResponse]:
-        product_dtos = await search_products_use_case.execute(
-            product_name
-        )
+        product_dtos = await search_products_use_case.execute(product_name)
 
-        return [
-            ProductResponse.from_dto(product_dto)
-            for product_dto in product_dtos
-        ]
+        return [ProductResponse.from_dto(product_dto) for product_dto in product_dtos]
 
     return router

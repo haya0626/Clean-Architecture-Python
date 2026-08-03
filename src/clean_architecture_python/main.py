@@ -26,15 +26,17 @@ def create_app() -> FastAPI:
 
     return application
 
+
 app = create_app()
+
 
 def run() -> None:
     # 開発用Webサーバーを起動する。
 
     settings = get_settings()
-    
+
     uvicorn.run(
-       "clean_architecture_python.main:app",
+        "clean_architecture_python.main:app",
         host=settings.host,
         port=settings.port,
         reload=settings.reload,

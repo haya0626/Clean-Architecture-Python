@@ -9,8 +9,9 @@ class SalesStatus(StrEnum):
     ON_SALE = "on_sale"
     STOPPED = "stopped"
 
+
 # frozen=True: インスタンス変数の書き換えを防止
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class Product:
     product_id: str
     product_name: str

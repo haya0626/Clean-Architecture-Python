@@ -11,7 +11,8 @@ class ProductRecord(TypedDict):
     sales_end_date: str | None
     deleted_at: str | None
 
-MOCK_PRODUCT_TABLE: tuple[ProductRecord, ...]  = (
+
+MOCK_PRODUCT_TABLE: tuple[ProductRecord, ...] = (
     {
         "product_id": "P-1001",
         "product_name": "ノートパソコン",
