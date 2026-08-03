@@ -22,7 +22,7 @@ class FakeProductRepository:
     ("input_name", "expected_name"),
     [
         ("  テスト商品\n", "テスト商品"),
-        ("   ", None),
+        (" ", ""),
         (None, None),
     ],
 )

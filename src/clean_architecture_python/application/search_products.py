@@ -12,7 +12,6 @@ class SearchProductsUseCase:
         self,
         product_name: str | None = None,
     ) -> list[ProductDto]:
-        """商品名を整形して、Repositoryへ検索を依頼する。"""
 
         normalized_name = product_name.strip() if product_name else None
 
