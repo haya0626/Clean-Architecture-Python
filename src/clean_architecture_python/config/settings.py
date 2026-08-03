@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    name: str
+    name: str = "Clean Architecture Python"
     host: str = "127.0.0.1"
     port: int = Field(default=8000)
     reload: bool = True
